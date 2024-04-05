@@ -1,1 +1,148 @@
-index.html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard that uses OpenWeather API</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Include Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+
+<body class="bg-white">
+    <header class="relative">
+        <div class="bg-gradient-to-r from-blue-500 to-indigo-600 p-4 flex justify-center">
+            <h1 class="text-white justify-center text-4xl font-bold mb-4">Weather Dashboard</h1>
+        </div>
+    </header>
+
+
+    <!-- Placeholder for header height -->
+    <div class="pt-16">
+        <!-- White background for Weather Dashboard -->
+        <div class="container mx-auto bg-white shadow-md rounded-lg p-4 mb-8">
+            <div class="container mx-auto grid grid-cols-12 gap-4">
+                <!-- Search Form Column -->
+                <div class="col-span-4">
+                    <h2 class="text-gray-700 text-4xl font-bold mb-4">Search for a City:</h2>
+                    <form id="city_form" class="flex flex-col">
+                        <input type="text" id="city_input" placeholder="     Enter Your City"
+                            class="px-4 py-4 border border-gray-400 focus:outline-none focus:ring focus:border-blue-300 mb-2">
+                        <button type="submit"
+                            class="px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-400">Search</button>
+                    </form>
+                    <div class="mt-8">
+                        
+                        <!-- Divider -->
+<hr class="my-4 border-gray-400">
+
+
+<!-- City Names as Placeholders -->
+<div class="bg-white-200 rounded-md p-4">
+    <div class="flex flex-col justify-center text-black bg-gray">
+        <div class="mx-auto text-xl font-semibold mb-4 cursor-pointer hover:text-blue-600 mb-2 bg-gray-400 p-2 rounded-md border border-gray-400 w-full text-center">Atlanta</div>
+        <div class="mx-auto text-xl font-semibold mb-4 cursor-pointer hover:text-blue-600 mb-2 bg-gray-400 p-2 rounded-md border border-gray-400 w-full text-center">Denver</div>
+        <div class="mx-auto text-xl font-semibold mb-4 cursor-pointer hover:text-blue-600 mb-2 bg-gray-400 p-2 rounded-md border border-gray-400 w-full text-center">Seattle</div>
+        <div class="mx-auto text-xl font-semibold mb-4 cursor-pointer hover:text-blue-600 mb-2 bg-gray-400 p-2 rounded-md border border-gray-400 w-full text-center">San Francisco</div>
+        <div class="mx-auto text-xl font-semibold mb-4 cursor-pointer hover:text-blue-600 mb-2 bg-gray-400 p-2 rounded-md border border-gray-400 w-full text-center">Orlando</div>
+        <div class="mx-auto text-xl font-semibold mb-4 cursor-pointer hover:text-blue-600 mb-2 bg-gray-400 p-2 rounded-md border border-gray-400 w-full text-center">New York</div>
+        <div class="mx-auto text-xl font-semibold mb-4 cursor-pointer hover:text-blue-600 mb-2 bg-gray-400 p-2 rounded-md border border-gray-400 w-full text-center">Chicago</div>
+        <div class="mx-auto text-xl font-semibold mb-4 cursor-pointer hover:text-blue-600 mb-2 bg-gray-400 p-2 rounded-md border border-gray-400 w-full text-center">Austin</div>
+    </div>
+</div>
+
+
+                    </div>
+                </div>
+
+
+                <!-- Main Content Column -->
+
+                <div class="container mx-auto col-span-8">
+                    <main class="p-4">
+                        <!-- Today's Weather Section -->
+                        <div class="today container mx-auto bg-gray-200 rounded-md p-4 mb-8">
+                            <h2 class="text-xl font-semibold mb-4">Today's Weather:</h2>
+                            <div class="flex items-center">
+                                <div class="w-1/2">
+                                    <p class="text-gray-700">Temperature: <span id="today_temp">76.62°F</span></p>
+                                    <p class="text-gray-700">Windidity: <span id="today_wind">8.43 MPH</span></p>
+                                    <p class="text-gray-700">Humidity: <span id="today_humidity">44 %</span></p>
+                                </div>
+                                <div class="w-1/2">
+                                   
+                                </div>
+                            </div>
+                        </div>
+
+                        <h2 class="text-xl font-semibold mb-4">5-Day Forecast:</h2>
+                        <div id="forecast" class="text-white">
+                            <!-- 5-day forecast information will be displayed here -->
+                        </div>
+                        <div id="forecast" class="text-white">
+                            <!-- Visual representation of 5-day forecast -->
+                            <div class="container mx-auto mt-8 mb-4 grid grid-cols-5 gap-4">
+                                <!-- Day 1 -->
+                                <div class="col-span-1 bg-gray-200 rounded-md p-4">
+                                    <!-- Display day and weather icon -->
+                                    <h3 class="text-gray-800 font-semibold mb-2">Day 1</h3>
+                                    <img src="weather_icon_1.png" alt="Weather Icon" class="w-12 h-12 mx-auto mb-2">
+                                    <!-- Display temperature -->
+                                    <p class="text-gray-600">Temperature: 25°C</p>
+                                </div>
+
+                                <!-- Day 2 -->
+                                <div class="col-span-1 bg-gray-200 rounded-md p-4">
+                                    <!-- Display day and weather icon -->
+                                    <h3 class="text-gray-800 font-semibold mb-2">Day 2</h3>
+                                    <img src="weather_icon_2.png" alt="Weather Icon" class="w-12 h-12 mx-auto mb-2">
+                                    <!-- Display temperature -->
+                                    <p class="text-gray-600">Temperature: 28°C</p>
+                                </div>
+
+                                <!-- Day 3 -->
+                                <div class="col-span-1 bg-gray-200 rounded-md p-4">
+                                    <!-- Display day and weather icon -->
+                                    <h3 class="text-gray-800 font-semibold mb-2">Day 3</h3>
+                                    <img src="weather_icon_3.png" alt="Weather Icon" class="w-12 h-12 mx-auto mb-2">
+                                    <!-- Display temperature -->
+                                    <p class="text-gray-600">Temperature: 22°C</p>
+                                </div>
+
+                                <!-- Day 4 -->
+                                <div class="col-span-1 bg-gray-200 rounded-md p-4">
+                                    <!-- Display day and weather icon -->
+                                    <h3 class="text-gray-800 font-semibold mb-2">Day 4</h3>
+                                    <img src="weather_icon_4.png" alt="Weather Icon" class="w-12 h-12 mx-auto mb-2">
+                                    <!-- Display temperature -->
+                                    <p class="text-gray-600">Temperature: 30°C</p>
+                                </div>
+
+                                <!-- Day 5 -->
+                                <div class="col-span-1 bg-gray-200 rounded-md p-4">
+                                    <!-- Display day and weather icon -->
+                                    <h3 class="text-gray-800 font-semibold mb-2">Day 5</h3>
+                                    <img src="weather_icon_4.png" alt="Weather Icon" class="w-12 h-12 mx-auto mb-2">
+                                            <!-- Display temperature -->
+                                            <p class="text-gray-600">Temperature: 26°C</p>
+                                        </div>
+                                    </div>
+                                    <!-- 5-day forecast information will be displayed here -->
+                                </div>
+                            </main>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <footer class=" pr-10 pb-10 text-center text-md text-black">
+                &copy; SlaH2o 2024
+            </footer>
+            <script src="script.js"></script>
+        </body>
+        
+        </html>
